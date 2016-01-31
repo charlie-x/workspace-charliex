@@ -164,6 +164,9 @@ cpdefine("inline:com-chilipeppr-workspace-charliex", ["chilipeppr_ready"], funct
             // Add our billboard to the menu (has name, url, picture of workspace)
             this.addBillboardToWorkspaceMenu();
             
+            this.loadLUAEditorWidget();
+            
+            
             // Setup an event to react to window resize. This helps since
             // some of our widgets have a manual resize to cleanly fill
             // the height of the browser window. You could turn this off and
@@ -234,6 +237,31 @@ cpdefine("inline:com-chilipeppr-workspace-charliex", ["chilipeppr_ready"], funct
 
                     });
                 }
+            );
+        },
+                /**
+         * Load the LUA Editor widget via chilipeppr.load()
+         */
+        loadLUAEditorWidget: function(callback) {
+
+            var that = this;
+
+            
+            chilipeppr.load(
+              "#com-chilipeppr-widget-luaeditor-instance",
+              "http://raw.githubusercontent.com/chilipeppr/widget-luaeditor/master/auto-generated-widget.html",
+              function() {
+                // Callback after widget loaded into #myDivWidgetLuaeditor
+                // Now use require.js to get reference to instantiated widget
+                cprequire(
+                  ["inline:com-chilipeppr-widget-luaeditor"], // the id you gave your widget
+                  function(myObjWidgetLuaeditor) {
+                    // Callback that is passed reference to the newly loaded widget
+                    console.log("Widget / Lua Editor just got loaded.", myObjWidgetLuaeditor);
+                    myObjWidgetLuaeditor.init();
+                  }
+                );
+              }
             );
         },
         /**
