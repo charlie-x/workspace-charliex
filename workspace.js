@@ -71,7 +71,8 @@ cpdefine("inline:com-chilipeppr-workspace-charliex", ["chilipeppr_ready"], funct
             this.loadWorkspaceMenu();
             // Add our billboard to the menu (has name, url, picture of workspace)
             this.addBillboardToWorkspaceMenu();
-            
+
+            // Add lua editor            
             this.loadLUAEditorWidget();
             
             
